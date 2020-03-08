@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   namespace :admin do
   resources :users
   end
+
   root 'tasks#index'
-  resources :tasks
- 
+  resources :tasks do
+    post :confirm, action: :confirm_new, on: :new 
+    post :inport, on: :collection
+  end
 end
